@@ -1,247 +1,418 @@
 <!DOCTYPE html>
+<html class="dark scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>The Red Thread | Visual Manifestations</title>
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;family=Public+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "obsidian": "#060606",
-                        "obsidian-card": "#0c0a09",
-                        "crimson-primary": "#c8102e",
-                        "crimson-deep": "#8b0000",
-                        "crimson-glow": "#9e1b1b",
-                        "gold-ancient": "#d4af37",
-                        "gold-muted": "#c5a059",
-                        "bone": "#f5f5f5"
-                    },
-                    fontFamily: {
-                        "serif": ["Cinzel", "serif"],
-                        "cormorant": ["Cormorant Garamond", "serif"],
-                        "mono": ["Space Mono", "monospace"],
-                        "sans": ["Public Sans", "sans-serif"]
-                    }
-                },
-            },
-        }
-    </script>
-<style>
-        .crimson-line {
-            background: linear-gradient(90deg, transparent 0%, #c8102e 50%, transparent 100%);
-            height: 1px;
-            width: 100%;
-            opacity: 0.6;
-        }
-        .crimson-radial {
-            background: radial-gradient(circle at 50% 15%, rgba(139, 0, 0, 0.22) 0%, rgba(6, 6, 6, 0) 70%);
-        }
-        .subtle-grid {
-            background-image: linear-gradient(to right, rgba(200, 16, 46, 0.04) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(200, 16, 46, 0.04) 1px, transparent 1px);
-            background-size: 48px 48px;
-        }
-    </style>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <!-- Unified Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#8b0000",
+            accent: "#ff0000",
+            silver: "#c0c0c0",
+            "background-dark": "#050505",
+          },
+          fontFamily: {
+            display: ["Cinzel", "serif"],
+            serif: ["Cormorant Garamond", "serif"],
+            sans: ["Inter", "sans-serif"],
+          }
+        },
+      },
+    };
+  </script>
+
+  <style type="text/tailwindcss">
+    :root {
+      --primary-red: #8b0000;
+      --gold-accent: #d4af37;
+      --silver-accent: #c0c0c0;
+      --deep-black: #050505;
+      --charcoal: #0a0a0a;
+    }
+
+    .bg-weave {
+      background-image:
+        linear-gradient(rgba(139, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 0, 0, 0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .red-thread-path {
+      position: absolute;
+      background: linear-gradient(to right, transparent, var(--primary-red), transparent);
+      height: 1px;
+      width: 100%;
+      opacity: 0.30;
+      filter: blur(1px);
+    }
+
+    .red-thread-path-vertical {
+      position: absolute;
+      background: linear-gradient(to bottom, transparent, var(--primary-red), transparent);
+      width: 1px;
+      height: 100%;
+      opacity: 0.20;
+      filter: blur(1px);
+    }
+
+    .orb-glow-crimson {
+      background: radial-gradient(circle, rgba(139, 0, 0, 0.25) 0%, rgba(50, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 70%);
+      filter: blur(40px);
+    }
+
+    .serif-sharp { font-family: "Cormorant Garamond", serif; }
+    .display-occult { font-family: "Cinzel", serif; }
+
+    /* ---- Subtle scroll reveal ---- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 650ms ease, transform 650ms ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
-<body class="bg-obsidian font-sans text-bone antialiased selection:bg-crimson-primary selection:text-white">
-<div class="relative flex min-h-screen w-full flex-col bg-obsidian text-bone subtle-grid overflow-x-hidden">
-<!-- Ambient Crimson Atmosphere -->
-<div class="pointer-events-none absolute inset-0 crimson-radial z-0"></div>
-<!-- Top Navigation -->
-<header class="relative z-50 flex items-center justify-between border-b border-crimson-deep/25 px-6 md:px-16 py-5 backdrop-blur-md bg-obsidian/85">
-<div class="flex items-center gap-3.5 group cursor-pointer">
-<div class="size-9 rounded-full border border-crimson-primary/40 flex items-center justify-center bg-crimson-deep/10 group-hover:border-crimson-primary transition-all duration-300 shadow-[0_0_12px_rgba(200,16,46,0.3)]">
-<span class="material-symbols-outlined text-crimson-primary text-xl">all_inclusive</span>
-</div>
-<div class="flex flex-col">
-<h2 class="font-serif text-sm tracking-[0.3em] font-semibold text-bone group-hover:text-gold-ancient transition-colors">THE RED THREAD</h2>
-<span class="font-mono text-[9px] tracking-widest text-gold-muted/60 uppercase">AGENCY // MMXXIV</span>
-</div>
-</div>
-<div class="flex items-center gap-10">
-<nav class="hidden md:flex items-center gap-8 font-mono text-xs tracking-[0.2em] text-gold-muted/80">
-<a class="hover:text-gold-ancient transition-colors" href="index.html">MANIFESTO</a>
-<a class="hover:text-gold-ancient transition-colors" href="services.html">THE LOOM</a>
-<a class="hover:text-gold-ancient transition-colors" href="portfolio.html">THE GALLERY</a>
-<a class="hover:text-gold-ancient text-bone transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[1px] after:bg-crimson-primary" href="index.html/contact">THE ARCHIVE</a>
-</nav>
-<a class="hidden sm:inline-flex items-center gap-2 border border-gold-muted/40 hover:border-gold-ancient hover:bg-gold-ancient/10 px-4 py-2 font-mono text-xs tracking-widest text-gold-ancient transition-all duration-300" href="#">
-<span>JOIN THE PATTERN</span>
-<span class="material-symbols-outlined text-xs">arrow_forward</span>
-</a>
-<button class="md:hidden flex cursor-pointer items-center justify-center size-9 border border-crimson-primary/30 text-gold-ancient hover:border-crimson-primary">
-<span class="material-symbols-outlined text-xl">menu</span>
-</button>
-</div>
-</header>
-<main class="relative z-10 layout-container flex h-full grow flex-col items-center">
-<div class="px-6 md:px-16 flex flex-1 flex-col max-w-[1240px] w-full py-16">
-<!-- Hero Section -->
-<div class="flex flex-col gap-6 mb-20 items-center text-center">
-<div class="flex items-center gap-3 font-mono text-[10px] tracking-[0.35em] text-crimson-primary uppercase">
-<span class="size-1.5 rounded-full bg-crimson-primary animate-pulse"></span>
-<span>THE SACRED GEOMETRY OF COMMERCE</span>
-<span class="size-1.5 rounded-full bg-crimson-primary animate-pulse"></span>
-</div>
-<div class="crimson-line max-w-xl"></div>
-<h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-light tracking-[0.12em] text-bone uppercase">
-Visual <span class="font-normal italic text-gold-ancient font-cormorant lowercase tracking-normal">Manifestations</span>
-</h1>
-<p class="font-cormorant text-xl md:text-2xl text-bone/70 max-w-2xl font-light italic leading-relaxed">
-A sacred collection of identity systems, esoteric branding frameworks, and the spiritual geometry of commerce.
-</p>
-<div class="crimson-line max-w-xl"></div>
-</div>
-<!-- Featured Large Assets -->
-<section class="mb-24">
-<div class="flex items-center justify-between mb-10 border-b border-crimson-deep/30 pb-4">
-<div class="flex items-center gap-3">
-<span class="size-2 bg-crimson-primary rotate-45"></span>
-<h3 class="font-serif text-xl md:text-2xl font-normal text-gold-ancient uppercase tracking-[0.25em]">Identity Frameworks</h3>
-</div>
-<span class="font-mono text-[11px] tracking-widest text-gold-muted/60 uppercase">SERIES // 01-03</span>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<!-- Card 1 -->
-<div class="group relative flex flex-col overflow-hidden bg-obsidian-card/90 p-3 border border-crimson-deep/30 hover:border-gold-ancient/60 transition-all duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
-<div class="relative w-full aspect-[3/4] overflow-hidden bg-black/60">
-<div class="w-full h-full bg-center bg-no-repeat bg-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-100" data-alt="Dark minimalist typography brand identity design" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfEbVRaVKBzpUolmAo7EVR8ynMxkZ5uWwc9VBotbGLPHfWQVnYuyHuIVStvVCeeI2ZZX1UCk4Uep_g-7MzWZhoztimVxQIgw3pCyrOlvU2qb9Th4wY-EbcGKrx7n6sftV5tDQGwuJmhlC2YtIFLHzUZioCom7dfwsck7DFR0KMlMfh5IOSNcsUWW8_9SZpRPpJCyPm4ctmSdJP_OTsycvTkxAhMWS4iA2xGPKhyeQHbqwUSQbo6Y58dEuhVMBm5VFlJeZKKAerDNM");'></div>
-<div class="absolute inset-0 border border-gold-muted/10 pointer-events-none"></div>
-</div>
-<div class="pt-4 pb-2 px-2 flex justify-between items-end border-t border-crimson-deep/20 mt-3">
-<div>
-<span class="font-mono text-[10px] tracking-[0.25em] text-crimson-primary uppercase block mb-1">SYSTEM 01 // ESOTERIC</span>
-<p class="font-serif text-bone group-hover:text-gold-ancient transition-colors text-base tracking-wide">The Alchemist's Standard</p>
-</div>
-<span class="font-mono text-[10px] text-gold-muted/50 tracking-widest">[01]</span>
-</div>
-</div>
-<!-- Card 2 -->
-<div class="group relative flex flex-col overflow-hidden bg-obsidian-card/90 p-3 border border-crimson-deep/30 hover:border-gold-ancient/60 transition-all duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
-<div class="relative w-full aspect-[3/4] overflow-hidden bg-black/60">
-<div class="w-full h-full bg-center bg-no-repeat bg-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-100" data-alt="Spiritual symbol based logo system layout" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDGpadCg_bwGpyrxf20FYhGuCDZp4iBFMbDYCvXOQZaamkV_nIfVWRIuHQ5mh0FyOhKqp3-1sHtlpFIz7ew1U9J6NR4DTVL--gdG-YDbxPfOvviupmFLa4SzHeaCSUw9iNWgBnUs8dQNpHOcV_8HG1gFHyZQaqMMP814WHVu4EJx4J_JMFkhmADjC78B-J10D3FZ6_h2GFylJS8AnK4_bT1oZjWa7SyJZ-9ITgki-gERbvKUGRLrBOl12bmrZ7mOwthq-PYx0pPpjI");'></div>
-<div class="absolute inset-0 border border-gold-muted/10 pointer-events-none"></div>
-</div>
-<div class="pt-4 pb-2 px-2 flex justify-between items-end border-t border-crimson-deep/20 mt-3">
-<div>
-<span class="font-mono text-[10px] tracking-[0.25em] text-crimson-primary uppercase block mb-1">SYSTEM 02 // ARCHETYPE</span>
-<p class="font-serif text-bone group-hover:text-gold-ancient transition-colors text-base tracking-wide">Void &amp; Vessel Branding</p>
-</div>
-<span class="font-mono text-[10px] text-gold-muted/50 tracking-widest">[02]</span>
-</div>
-</div>
-<!-- Card 3 -->
-<div class="group relative flex flex-col overflow-hidden bg-obsidian-card/90 p-3 border border-crimson-deep/30 hover:border-gold-ancient/60 transition-all duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
-<div class="relative w-full aspect-[3/4] overflow-hidden bg-black/60">
-<div class="w-full h-full bg-center bg-no-repeat bg-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-100" data-alt="Monolithic black and white brand guidelines" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCTDknZpJp2fhItgJPe3fy3rrBQ9m60SOwvVJcN3bUUk6NKslLIbGnP1D3AcQBP_Wc10FV8cdcVkZ7O5S9vF0MhgPgA6tkpgtvva4w6JQCJz7sW11GqTXsZnXfgY2RJTTEWiG1KAJOTy9jflCdtE-h5Dpl_DvsFpxVRS0q3KNboR3teNSkBLCPyn6rd9vyK0F7SL63WNCUAC4nG3i1zkrcXwm0R8g-lopdc8cXAZJ7OAdvAnxc_YEHakci4-lsTRzlW17Q_AG08EKc");'></div>
-<div class="absolute inset-0 border border-gold-muted/10 pointer-events-none"></div>
-</div>
-<div class="pt-4 pb-2 px-2 flex justify-between items-end border-t border-crimson-deep/20 mt-3">
-<div>
-<span class="font-mono text-[10px] tracking-[0.25em] text-crimson-primary uppercase block mb-1">SYSTEM 03 // MONOLITH</span>
-<p class="font-serif text-bone group-hover:text-gold-ancient transition-colors text-base tracking-wide">Ethereal Constructs</p>
-</div>
-<span class="font-mono text-[10px] text-gold-muted/50 tracking-widest">[03]</span>
-</div>
-</div>
-</div>
-</section>
-<!-- Decorative Thread Break -->
-<div class="flex justify-center items-center gap-6 my-8">
-<div class="h-[1px] w-28 bg-gradient-to-r from-transparent to-crimson-primary"></div>
-<span class="font-mono text-[10px] text-crimson-primary tracking-[0.3em] uppercase">✦ THE WEAVE ✦</span>
-<div class="h-[1px] w-28 bg-gradient-to-l from-transparent to-crimson-primary"></div>
-</div>
-<!-- Logo Systems Grid -->
-<section class="mb-24">
-<div class="text-center mb-12">
-<span class="font-mono text-[10px] tracking-[0.3em] text-gold-muted/70 uppercase block mb-2">SACRED GLYPHS</span>
-<h3 class="font-serif text-2xl md:text-3xl font-normal text-gold-ancient uppercase tracking-[0.25em]">Sigils &amp; Marks</h3>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-5">
-<div class="aspect-square bg-obsidian-card rounded-none flex items-center justify-center p-8 border border-crimson-deep/30 hover:border-gold-ancient transition-all duration-300 group relative">
-<div class="w-full h-full bg-center bg-no-repeat bg-contain grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" data-alt="Geometric occult-style circular logo mark" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLzgFQU4Gkb_9Uqx_x2kHTN9dvkgRFwfbRTB1I6vvyvebPo1jy-X_lsC9UAI9RTzU1aLFOgh7WfhSYeCY-UUaoflkHblTTNh9oedif4ABwn59ZEKRh79Lf1ewJ79lpi7Oizf8LT5b4PKFjIgwDQU-e-kAyfs7ZY_Bx3FWNdhB79LSE5uRbD9qCDt2lakPE4b-m_JhV7r23i7KAKOMFF8MZYZycZ7uqcz0nUkq99ENLRvc-VjWVoEE6hfC2lGgQTumvWESbGJv5b5s");'></div>
-<span class="absolute bottom-2 left-2 font-mono text-[9px] text-gold-muted/40">SIGIL // α</span>
-</div>
-<div class="aspect-square bg-obsidian-card rounded-none flex items-center justify-center p-8 border border-crimson-deep/30 hover:border-gold-ancient transition-all duration-300 group relative">
-<div class="w-full h-full bg-center bg-no-repeat bg-contain grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" data-alt="Minimalist linear eye symbol brand mark" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAonIXzX7cWZZKae2NQqI81LYEWCwCAWPCytFWnHLlttnT_cjCVATfzNjg0yVOwq0P_HppAwQWpp8QDtG49Bf3Z3w0xcSf_FtOf3WkXT6DczqoFfx96QmxiGUKeYot6jM1wK2LH3qHU6wWE1IgO4yOnNRPxMph9snP5xRahKkiu1v5r3abRNuy3O0AEOdPda04CO1a8K8QFxLjBHWnvTcziGH_T9fF4RTWJzcdw7FYLaiaHzG8MijFqGaIOYkroU4D--Atrcy3ftrs");'></div>
-<span class="absolute bottom-2 left-2 font-mono text-[9px] text-gold-muted/40">SIGIL // β</span>
-</div>
-<div class="aspect-square bg-obsidian-card rounded-none flex items-center justify-center p-8 border border-crimson-deep/30 hover:border-gold-ancient transition-all duration-300 group relative">
-<div class="w-full h-full bg-center bg-no-repeat bg-contain grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" data-alt="Abstract triangle interwoven logo concept" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAPOhoWP9yIgIuzhvJejIFeGgde37GMmrciEE3PDiCmehHDKnPWAtNo_YGbxGe8SB3ux_aaBP5xfduwKhyGpo1Rkqa_uOZMf3TEKWLiE_N95ihozvrpjBkmadgmRTfMo3tCDKk0eeGRfz2hY1D9Kf9P5qebh-gNFtzOfBR2CNq7H-0mxTn3cZ38rtvp9hFDnQLlqXh7LKj2E_4EUp9lqDCShkiQQjbCDSnSpc49acIbGK2uUMbNnYAdsxeYXf6pu0MrRgkNXErW82M");'></div>
-<span class="absolute bottom-2 left-2 font-mono text-[9px] text-gold-muted/40">SIGIL // γ</span>
-</div>
-<div class="aspect-square bg-obsidian-card rounded-none flex items-center justify-center p-8 border border-crimson-deep/30 hover:border-gold-ancient transition-all duration-300 group relative">
-<div class="w-full h-full bg-center bg-no-repeat bg-contain grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" data-alt="Serif lettermark logo with golden accents" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAS1SDojrMjXtF6b_yLSSeXwQdwdqCV0KkY51Pi0Z8QcHkFlrF_tiYU6mMpmwekrB8IdnQQFtRbat2gY5DME6BnBnrwWueRKRYLDOVXA7ztXonIJVD9-JgJv215kRTs-rnEboTek2GqhLwT0dA_ioJMH8XJZz9pfSeCPUHLClllGdPqYE4ZmY7f_oPt-7ygI_OymMvBniY4IVUIQv45I8d1H8gneoT43HCGDExL30n76KG7ErSXdj4YDZUPXQpgSde1hcspDHrVoDc");'></div>
-<span class="absolute bottom-2 left-2 font-mono text-[9px] text-gold-muted/40">SIGIL // δ</span>
-</div>
-</div>
-</section>
-<!-- Brand Standards Detail -->
-<section class="bg-obsidian-card/95 border border-crimson-deep/40 p-8 md:p-14 relative overflow-hidden shadow-[0_0_50px_rgba(139,0,0,0.15)]">
-<div class="absolute -top-32 -right-32 w-80 h-80 bg-crimson-primary/10 rounded-full blur-3xl pointer-events-none"></div>
-<div class="relative z-10 flex flex-col md:flex-row gap-12 items-center">
-<div class="flex-1 space-y-6">
-<div class="flex items-center gap-2">
-<span class="font-mono text-[10px] tracking-[0.3em] text-crimson-primary uppercase">TECHNIQUE &amp; TRADITION</span>
-</div>
-<h4 class="font-serif text-3xl md:text-4xl text-bone tracking-wide uppercase leading-tight">
-The Thread <span class="text-gold-ancient italic font-cormorant lowercase font-normal">Principle</span>
-</h4>
-<p class="font-cormorant text-lg md:text-xl text-bone/75 font-light leading-relaxed">
-Our methodology transcends traditional design. We look for the underlying connection—the red thread—that binds a brand's spirit to its physical manifestation. Every stroke is intentional, every color a chosen frequency.
-</p>
-<ul class="space-y-4 pt-2 font-mono text-xs tracking-widest text-gold-muted">
-<li class="flex items-center gap-3">
-<span class="size-1.5 bg-crimson-primary"></span>
-<span class="uppercase">Geometric Precision</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="size-1.5 bg-crimson-primary"></span>
-<span class="uppercase">Archetypal Resonance</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="size-1.5 bg-crimson-primary"></span>
-<span class="uppercase">Timeless Scalability</span>
-</li>
-</ul>
-</div>
-<div class="flex-1 w-full">
-<div class="aspect-video bg-black/90 border border-crimson-deep/40 shadow-2xl relative overflow-hidden group">
-<div class="absolute inset-0 bg-center bg-cover grayscale contrast-125 opacity-70 group-hover:opacity-90 transition-opacity duration-500" data-alt="Technical drawing of a logo construction grid" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAZNCrhmOtdSbrPwE09vJtIbjmcysmeZs4fHlps4EFtJ8BA4ZzfIjFcI8w_hJQn2xZ1Ji3UgrQKMHgVXuZmt6UC364R0fS-VC2a9UZigKhwkjoaJrryFGUM7dSn0PEhKQwtuF62YVg2OO4_wbQOOYrwivAzRfmoS0ZMv5GvTRQgcEyAySP6edZg6OZ1zNyTtQsaJHhQLlFaFZLedW2uC2jTkAQqiz0yAvYg_cBvQhDoO3ckzXaz2ONP4z-elKJn-6nV8NTofuw1f3A");'></div>
-<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-<div class="absolute top-4 left-4 font-mono text-[9px] text-crimson-primary tracking-widest uppercase border border-crimson-deep/40 px-2 py-0.5 bg-obsidian/80">CANONICAL PROPORTIONS</div>
-<div class="absolute bottom-4 right-4 bg-crimson-deep/90 border border-crimson-primary px-3 py-1 font-mono text-[10px] text-bone tracking-widest uppercase shadow-lg">Grid Analysis</div>
-</div>
-</div>
-</div>
-</section>
-</div>
-</main>
-<!-- Footer -->
-<footer class="relative z-10 border-t border-crimson-deep/30 py-14 px-6 md:px-16 bg-obsidian">
-<div class="max-w-[1240px] mx-auto flex flex-col items-center gap-6 text-center">
-<div class="size-10 rounded-full border border-crimson-primary/40 flex items-center justify-center text-crimson-primary shadow-[0_0_15px_rgba(200,16,46,0.25)]">
-<span class="material-symbols-outlined text-2xl">all_inclusive</span>
-</div>
-<p class="font-serif text-gold-ancient tracking-[0.25em] uppercase text-xs">
-THE RED THREAD AGENCY // MMXXIV
-</p>
-<p class="font-cormorant italic text-sm text-bone/50 max-w-md">
-"That which is bound below is interwoven above."
-</p>
-<div class="flex gap-8 text-gold-muted/60 font-mono text-xs tracking-widest pt-2">
-<a class="hover:text-gold-ancient transition-colors" href="index.html">[ THE THRESHOLD ]</a>
-<a class="hover:text-gold-ancient transition-colors" href="portfolio.html">[ THE GALLERY ]</a>
-<a class="hover:text-gold-ancient transition-colors" href="service.html">[ THE LOOM ]</a>
-</div>
-<span class="font-mono text-[10px] text-bone/30 tracking-widest uppercase">ALL RIGHTS CONSECRATED © MMXXIV</span>
-</div>
-</footer>
-</div>
-</body></html>
+
+<body class="bg-background-dark text-stone-300 font-sans selection:bg-primary/50 overflow-x-hidden bg-weave relative flex min-h-screen w-full flex-col">
+
+  <!-- Ambient Crimson Atmosphere & Background Threads -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute inset-0 orb-glow-crimson opacity-50"></div>
+    <div class="red-thread-path top-[10%] -rotate-2"></div>
+    <div class="red-thread-path top-[30%] rotate-3"></div>
+    <div class="red-thread-path top-[50%] -rotate-1"></div>
+    <div class="red-thread-path top-[70%] rotate-2"></div>
+    <div class="red-thread-path top-[90%] -rotate-3"></div>
+    <div class="red-thread-path-vertical left-[15%] skew-x-6"></div>
+    <div class="red-thread-path-vertical left-[45%] -skew-x-12"></div>
+    <div class="red-thread-path-vertical right-[15%] skew-x-3"></div>
+  </div>
+
+  <!-- UNIFIED NAV -->
+  <nav class="fixed top-0 w-full z-50 bg-background-dark/90 backdrop-blur-xl border-b border-primary/20">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+
+      <a href="index.html" aria-label="Return to Homepage" class="flex items-center space-x-3 group">
+        <span class="material-symbols-outlined text-primary text-3xl font-light">gesture</span>
+        <span class="display-occult text-xl tracking-[0.3em] text-white">THE RED THREAD</span>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center space-x-12 display-occult text-[10px] tracking-[0.3em] uppercase">
+        <a class="hover:text-primary transition-colors text-stone-400" href="services.html">The Loom</a>
+        <a class="hover:text-primary transition-colors text-stone-400" href="portfolio.html">The Gallery</a>
+        <a class="hover:text-primary transition-colors text-stone-400" href="index.html">The Threshold</a>
+        <a class="px-8 py-2 border border-primary/30 text-white hover:border-primary hover:text-primary transition-all duration-500 bg-primary/5" href="index.html#contact">
+          Contact the Oracle
+        </a>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="md:hidden relative">
+        <button
+          id="mobileMenuButton"
+          type="button"
+          class="inline-flex items-center justify-center rounded-md p-2 text-white hover:text-primary hover:bg-white/5 transition"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+          aria-label="Open menu"
+        >
+          <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+
+        <div
+          id="mobileMenu"
+          class="hidden absolute right-0 mt-3 w-64 z-[999] rounded-xl border border-primary/20 bg-background-dark/95 backdrop-blur-xl shadow-2xl overflow-hidden"
+        >
+          <div class="flex flex-col p-3 display-occult text-[10px] tracking-[0.3em] uppercase">
+            <a class="px-3 py-3 text-stone-300 hover:text-primary hover:bg-white/5 transition rounded-lg" href="services.html">The Loom</a>
+            <a class="px-3 py-3 text-stone-300 hover:text-primary hover:bg-white/5 transition rounded-lg" href="portfolio.html">The Gallery</a>
+            <a class="px-3 py-3 text-stone-300 hover:text-primary hover:bg-white/5 transition rounded-lg" href="index.html">The Threshold</a>
+            <a class="px-3 py-3 text-white border border-primary/30 bg-primary/5 hover:border-primary hover:text-primary transition rounded-lg" href="index.html#contact">
+              Contact the Oracle
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+  <main class="relative z-10 flex h-full grow flex-col items-center pt-32 pb-20">
+    <div class="px-6 md:px-12 xl:px-16 flex flex-1 flex-col max-w-7xl w-full py-16">
+      
+      <!-- Hero Section -->
+      <div class="flex flex-col gap-6 mb-24 items-center text-center reveal">
+        <div class="flex items-center gap-3 display-occult text-[10px] tracking-[0.35em] text-primary uppercase">
+          <span class="size-1.5 rounded-full bg-primary animate-pulse"></span>
+          <span>THE SACRED GEOMETRY OF COMMERCE</span>
+          <span class="size-1.5 rounded-full bg-primary animate-pulse"></span>
+        </div>
+        
+        <div class="h-px w-full max-w-xl bg-gradient-to-r from-transparent via-primary/60 to-transparent my-2"></div>
+        
+        <h1 class="serif-sharp text-5xl sm:text-6xl md:text-8xl font-light leading-[0.9] text-white">
+          Visual <br/>
+          <span class="italic text-[#d4af37]">Manifestations</span>
+        </h1>
+        
+        <p class="serif-sharp text-xl md:text-2xl text-stone-400 max-w-2xl font-light italic leading-relaxed mt-4">
+          A sacred collection of identity systems, esoteric branding frameworks, and the spiritual geometry of commerce.
+        </p>
+        
+        <div class="h-px w-full max-w-xl bg-gradient-to-r from-transparent via-primary/60 to-transparent mt-4"></div>
+      </div>
+
+      <!-- Featured Large Assets -->
+      <section class="mb-32">
+        <div class="flex items-center justify-between mb-10 border-b border-primary/20 pb-4 reveal">
+          <div class="flex items-center gap-3">
+            <span class="size-2 bg-primary rotate-45"></span>
+            <h3 class="display-occult text-xl md:text-2xl font-normal text-white uppercase tracking-[0.25em]">Identity Frameworks</h3>
+          </div>
+          <span class="display-occult text-[10px] tracking-widest text-stone-500 uppercase">SERIES // 01-03</span>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Card 1 -->
+          <div class="group relative flex flex-col overflow-hidden bg-[#0a0a0a] p-3 border border-white/5 hover:border-[#d4af37]/40 transition-all duration-500 reveal">
+            <div class="relative w-full aspect-[3/4] overflow-hidden bg-black/60">
+              <div class="w-full h-full bg-center bg-no-repeat bg-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-70 group-hover:opacity-100" data-alt="Dark minimalist typography brand identity design" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfEbVRaVKBzpUolmAo7EVR8ynMxkZ5uWwc9VBotbGLPHfWQVnYuyHuIVStvVCeeI2ZZX1UCk4Uep_g-7MzWZhoztimVxQIgw3pCyrOlvU2qb9Th4wY-EbcGKrx7n6sftV5tDQGwuJmhlC2YtIFLHzUZioCom7dfwsck7DFR0KMlMfh5IOSNcsUWW8_9SZpRPpJCyPm4ctmSdJP_OTsycvTkxAhMWS4iA2xGPKhyeQHbqwUSQbo6Y58dEuhVMBm5VFlJeZKKAerDNM");'></div>
+              <div class="absolute inset-0 border border-white/5 pointer-events-none"></div>
+            </div>
+            <div class="pt-5 pb-2 px-2 flex justify-between items-end border-t border-white/5 mt-3">
+              <div>
+                <span class="display-occult text-[9px] tracking-[0.25em] text-primary uppercase block mb-1">SYSTEM 01 // ESOTERIC</span>
+                <p class="serif-sharp text-stone-300 group-hover:text-[#d4af37] transition-colors text-xl tracking-wide">The Alchemist's Standard</p>
+              </div>
+              <span class="display-occult text-[10px] text-stone-600 tracking-widest">[01]</span>
+            </div>
+          </div>
+          
+          <!-- Card 2 -->
+          <div class="group relative flex flex-col overflow-hidden bg-[#0a0a0a] p-3 border border-white/5 hover:border-[#d4af37]/40 transition-all duration-500 reveal" style="transition-delay: 100ms;">
+            <div class="relative w-full aspect-[3/4] overflow-hidden bg-black/60">
+              <div class="w-full h-full bg-center bg-no-repeat bg-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-70 group-hover:opacity-100" data-alt="Spiritual symbol based logo system layout" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDGpadCg_bwGpyrxf20FYhGuCDZp4iBFMbDYCvXOQZaamkV_nIfVWRIuHQ5mh0FyOhKqp3-1sHtlpFIz7ew1U9J6NR4DTVL--gdG-YDbxPfOvviupmFLa4SzHeaCSUw9iNWgBnUs8dQNpHOcV_8HG1gFHyZQaqMMP814WHVu4EJx4J_JMFkhmADjC78B-J10D3FZ6_h2GFylJS8AnK4_bT1oZjWa7SyJZ-9ITgki-gERbvKUGRLrBOl12bmrZ7mOwthq-PYx0pPpjI");'></div>
+              <div class="absolute inset-0 border border-white/5 pointer-events-none"></div>
+            </div>
+            <div class="pt-5 pb-2 px-2 flex justify-between items-end border-t border-white/5 mt-3">
+              <div>
+                <span class="display-occult text-[9px] tracking-[0.25em] text-primary uppercase block mb-1">SYSTEM 02 // ARCHETYPE</span>
+                <p class="serif-sharp text-stone-300 group-hover:text-[#d4af37] transition-colors text-xl tracking-wide">Void &amp; Vessel Branding</p>
+              </div>
+              <span class="display-occult text-[10px] text-stone-600 tracking-widest">[02]</span>
+            </div>
+          </div>
+          
+          <!-- Card 3 -->
+          <div class="group relative flex flex-col overflow-hidden bg-[#0a0a0a] p-3 border border-white/5 hover:border-[#d4af37]/40 transition-all duration-500 reveal" style="transition-delay: 200ms;">
+            <div class="relative w-full aspect-[3/4] overflow-hidden bg-black/60">
+              <div class="w-full h-full bg-center bg-no-repeat bg-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-70 group-hover:opacity-100" data-alt="Monolithic black and white brand guidelines" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCTDknZpJp2fhItgJPe3fy3rrBQ9m60SOwvVJcN3bUUk6NKslLIbGnP1D3AcQBP_Wc10FV8cdcVkZ7O5S9vF0MhgPgA6tkpgtvva4w6JQCJz7sW11GqTXsZnXfgY2RJTTEWiG1KAJOTy9jflCdtE-h5Dpl_DvsFpxVRS0q3KNboR3teNSkBLCPyn6rd9vyK0F7SL63WNCUAC4nG3i1zkrcXwm0R8g-lopdc8cXAZJ7OAdvAnxc_YEHakci4-lsTRzlW17Q_AG08EKc");'></div>
+              <div class="absolute inset-0 border border-white/5 pointer-events-none"></div>
+            </div>
+            <div class="pt-5 pb-2 px-2 flex justify-between items-end border-t border-white/5 mt-3">
+              <div>
+                <span class="display-occult text-[9px] tracking-[0.25em] text-primary uppercase block mb-1">SYSTEM 03 // MONOLITH</span>
+                <p class="serif-sharp text-stone-300 group-hover:text-[#d4af37] transition-colors text-xl tracking-wide">Ethereal Constructs</p>
+              </div>
+              <span class="display-occult text-[10px] text-stone-600 tracking-widest">[03]</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Decorative Thread Break -->
+      <div class="flex justify-center items-center gap-6 my-16 reveal">
+        <div class="h-px w-28 bg-gradient-to-r from-transparent to-primary"></div>
+        <span class="display-occult text-[10px] text-primary tracking-[0.4em] uppercase">✦ THE WEAVE ✦</span>
+        <div class="h-px w-28 bg-gradient-to-l from-transparent to-primary"></div>
+      </div>
+
+      <!-- Logo Systems Grid -->
+      <section class="mb-32">
+        <div class="text-center mb-16 reveal">
+          <span class="display-occult text-[10px] tracking-[0.3em] text-stone-500 uppercase block mb-4">SACRED GLYPHS</span>
+          <h3 class="serif-sharp text-4xl md:text-5xl font-light text-white italic">Sigils &amp; Marks</h3>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 border border-white/5 reveal">
+          <div class="aspect-square bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative">
+            <div class="w-full h-full bg-center bg-no-repeat bg-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" data-alt="Geometric occult-style circular logo mark" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLzgFQU4Gkb_9Uqx_x2kHTN9dvkgRFwfbRTB1I6vvyvebPo1jy-X_lsC9UAI9RTzU1aLFOgh7WfhSYeCY-UUaoflkHblTTNh9oedif4ABwn59ZEKRh79Lf1ewJ79lpi7Oizf8LT5b4PKFjIgwDQU-e-kAyfs7ZY_Bx3FWNdhB79LSE5uRbD9qCDt2lakPE4b-m_JhV7r23i7KAKOMFF8MZYZycZ7uqcz0nUkq99ENLRvc-VjWVoEE6hfC2lGgQTumvWESbGJv5b5s");'></div>
+            <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // α</span>
+          </div>
+          <div class="aspect-square bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative">
+            <div class="w-full h-full bg-center bg-no-repeat bg-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" data-alt="Minimalist linear eye symbol brand mark" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAonIXzX7cWZZKae2NQqI81LYEWCwCAWPCytFWnHLlttnT_cjCVATfzNjg0yVOwq0P_HppAwQWpp8QDtG49Bf3Z3w0xcSf_FtOf3WkXT6DczqoFfx96QmxiGUKeYot6jM1wK2LH3qHU6wWE1IgO4yOnNRPxMph9snP5xRahKkiu1v5r3abRNuy3O0AEOdPda04CO1a8K8QFxLjBHWnvTcziGH_T9fF4RTWJzcdw7FYLaiaHzG8MijFqGaIOYkroU4D--Atrcy3ftrs");'></div>
+            <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // β</span>
+          </div>
+          <div class="aspect-square bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative">
+            <div class="w-full h-full bg-center bg-no-repeat bg-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" data-alt="Abstract triangle interwoven logo concept" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAPOhoWP9yIgIuzhvJejIFeGgde37GMmrciEE3PDiCmehHDKnPWAtNo_YGbxGe8SB3ux_aaBP5xfduwKhyGpo1Rkqa_uOZMf3TEKWLiE_N95ihozvrpjBkmadgmRTfMo3tCDKk0eeGRfz2hY1D9Kf9P5qebh-gNFtzOfBR2CNq7H-0mxTn3cZ38rtvp9hFDnQLlqXh7LKj2E_4EUp9lqDCShkiQQjbCDSnSpc49acIbGK2uUMbNnYAdsxeYXf6pu0MrRgkNXErW82M");'></div>
+            <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // γ</span>
+          </div>
+          <div class="aspect-square bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative">
+            <div class="w-full h-full bg-center bg-no-repeat bg-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" data-alt="Serif lettermark logo with golden accents" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAS1SDojrMjXtF6b_yLSSeXwQdwdqCV0KkY51Pi0Z8QcHkFlrF_tiYU6mMpmwekrB8IdnQQFtRbat2gY5DME6BnBnrwWueRKRYLDOVXA7ztXonIJVD9-JgJv215kRTs-rnEboTek2GqhLwT0dA_ioJMH8XJZz9pfSeCPUHLClllGdPqYE4ZmY7f_oPt-7ygI_OymMvBniY4IVUIQv45I8d1H8gneoT43HCGDExL30n76KG7ErSXdj4YDZUPXQpgSde1hcspDHrVoDc");'></div>
+            <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // δ</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Brand Standards Detail -->
+      <section class="bg-[#0a0a0a]/90 border border-primary/20 p-8 md:p-14 relative overflow-hidden shadow-2xl reveal">
+        <div class="absolute -top-32 -right-32 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col lg:flex-row gap-16 items-center">
+          
+          <div class="flex-1 space-y-6">
+            <span class="display-occult text-[10px] tracking-[0.3em] text-primary uppercase">TECHNIQUE &amp; TRADITION</span>
+            
+            <h4 class="serif-sharp text-4xl md:text-5xl text-white font-light leading-tight">
+              The Thread <br/>
+              <span class="text-[#d4af37] italic lowercase">Principle</span>
+            </h4>
+            
+            <p class="serif-sharp text-xl text-stone-400 font-light leading-relaxed">
+              Our methodology transcends traditional design. We look for the underlying connection—the red thread—that binds a brand's spirit to its physical manifestation. Every stroke is intentional, every color a chosen frequency.
+            </p>
+            
+            <ul class="space-y-4 pt-4 display-occult text-[10px] tracking-widest text-stone-300">
+              <li class="flex items-center gap-4">
+                <span class="size-1 bg-primary rotate-45"></span>
+                <span>GEOMETRIC PRECISION</span>
+              </li>
+              <li class="flex items-center gap-4">
+                <span class="size-1 bg-primary rotate-45"></span>
+                <span>ARCHETYPAL RESONANCE</span>
+              </li>
+              <li class="flex items-center gap-4">
+                <span class="size-1 bg-primary rotate-45"></span>
+                <span>TIMELESS SCALABILITY</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="flex-1 w-full">
+            <div class="aspect-[4/3] lg:aspect-video bg-black/90 border border-white/10 shadow-2xl relative overflow-hidden group">
+              <div class="absolute inset-0 bg-center bg-cover grayscale contrast-125 opacity-50 group-hover:opacity-80 transition-opacity duration-700" data-alt="Technical drawing of a logo construction grid" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAZNCrhmOtdSbrPwE09vJtIbjmcysmeZs4fHlps4EFtJ8BA4ZzfIjFcI8w_hJQn2xZ1Ji3UgrQKMHgVXuZmt6UC364R0fS-VC2a9UZigKhwkjoaJrryFGUM7dSn0PEhKQwtuF62YVg2OO4_wbQOOYrwivAzRfmoS0ZMv5GvTRQgcEyAySP6edZg6OZ1zNyTtQsaJHhQLlFaFZLedW2uC2jTkAQqiz0yAvYg_cBvQhDoO3ckzXaz2ONP4z-elKJn-6nV8NTofuw1f3A");'></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+              
+              <div class="absolute top-4 left-4 display-occult text-[9px] text-primary tracking-[0.3em] uppercase border border-primary/20 px-3 py-1 bg-background-dark/80 backdrop-blur-sm">
+                CANONICAL PROPORTIONS
+              </div>
+              
+              <div class="absolute bottom-4 right-4 bg-primary border border-primary/50 px-4 py-2 display-occult text-[9px] text-white tracking-[0.3em] uppercase shadow-lg">
+                Grid Analysis
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- UNIFIED FOOTER -->
+  <footer class="py-16 md:py-20 border-t border-primary/20 bg-[#0a0a0a] relative mt-auto">
+    <div class="absolute top-0 left-0 w-full red-thread-horizontal opacity-10"></div>
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12 relative z-10">
+      <div class="flex items-center space-x-3">
+        <span class="material-symbols-outlined text-primary text-2xl font-thin">gesture</span>
+        <span class="display-occult text-xs tracking-[0.4em] text-white uppercase">The Red Thread Agency // MMXXIV</span>
+      </div>
+
+      <div class="flex space-x-12 display-occult text-[10px] tracking-[0.3em] uppercase text-[#d4af37]">
+        <a class="hover:text-primary transition-colors" href="services.html">The Loom</a>
+        <a class="hover:text-primary transition-colors" href="portfolio.html">The Gallery</a>
+        <a class="hover:text-primary transition-colors" href="index.html">Home</a>
+      </div>
+
+      <div class="text-stone-500 display-occult text-[9px] tracking-[0.4em]">
+        EVERY STITCH HAS MEANING
+      </div>
+    </div>
+  </footer>
+
+  <!-- Unified Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile menu
+      const btn = document.getElementById('mobileMenuButton');
+      const menu = document.getElementById('mobileMenu');
+
+      if (btn && menu) {
+        const closeMenu = () => {
+          menu.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+        };
+
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const willOpen = menu.classList.contains('hidden');
+          menu.classList.toggle('hidden');
+          btn.setAttribute('aria-expanded', String(willOpen));
+        });
+
+        menu.addEventListener('click', (e) => {
+          if (e.target.closest('a')) closeMenu();
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!menu.contains(e.target) && !btn.contains(e.target)) closeMenu();
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeMenu();
+        });
+      }
+
+      // Scroll reveal
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      
+      if (!prefersReduced) {
+        const revealEls = document.querySelectorAll('.reveal');
+        
+        if (revealEls.length) {
+          const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Optional: stop observing once revealed
+                // revealObserver.unobserve(entry.target); 
+              }
+            });
+          }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+          revealEls.forEach(el => revealObserver.observe(el));
+        }
+      } else {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+      }
+    });
+  </script>
+
+</body>
+</html>
