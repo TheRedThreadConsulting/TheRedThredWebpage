@@ -184,17 +184,17 @@
     </div>
   </nav>
 
-  <header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20">
+<header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20">
     <!-- Background textures -->
     <div class="absolute inset-0 loom-texture"></div>
     <div class="absolute top-1/3 left-0 w-full red-thread-horizontal opacity-20"></div>
     <div class="absolute bottom-1/3 left-0 w-full red-thread-horizontal opacity-20"></div>
 
-    <!-- UPDATED: Switched to a 12-column grid for better proportion control -->
-    <div class="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16 items-center w-full reveal">
+    <!-- UPDATED: Changed max-w-7xl to max-w-[100rem] and adjusted padding -->
+    <div class="relative z-10 w-full max-w-[100rem] mx-auto px-6 lg:px-12 xl:px-16 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center reveal">
       
-      <!-- Left Column: Typography (Takes up 5 out of 12 columns on desktop) -->
-      <div class="text-center lg:text-left order-2 lg:order-1 lg:col-span-5 z-20">
+      <!-- Left Column: Typography (Takes 4 columns on huge screens to leave 8 for the image) -->
+      <div class="text-center lg:text-left order-2 lg:order-1 lg:col-span-5 xl:col-span-4 z-20">
         <h2 class="display-occult text-xs md:text-sm tracking-[0.6em] uppercase text-primary mb-8">Masters of Esoteric Craft</h2>
         <h1 class="serif-sharp text-5xl md:text-7xl xl:text-8xl text-white leading-[0.9] mb-8 font-light">
           The unseen, woven<br/>
@@ -218,16 +218,15 @@
         </div>
       </div>
 
-      <!-- Right Column: The Hero Image (Takes up 7 out of 12 columns on desktop) -->
-      <!-- UPDATED: Removed max-width restrictions and added a slight scale boost on large screens -->
-      <div class="relative flex justify-center items-center order-1 lg:order-2 w-full lg:col-span-7 xl:scale-110 transition-transform duration-700">
+      <!-- Right Column: The Hero Image (Takes 8 columns out of 12 on huge screens) -->
+      <div class="relative flex justify-center items-center order-1 lg:order-2 w-full lg:col-span-7 xl:col-span-8">
         <!-- Deep red glow behind the image -->
-        <div class="absolute inset-0 orb-glow-crimson opacity-60 scale-125"></div>
+        <div class="absolute inset-0 orb-glow-crimson opacity-60 scale-[1.3] blur-3xl"></div>
         
         <!-- The Image -->
         <img
           alt="Women weaving a web - The Red Thread Consulting"
-          class="relative z-10 w-full h-auto object-contain rounded-sm border border-primary/30 shadow-[0_0_50px_rgba(139,0,0,0.2)]"
+          class="relative z-10 w-full h-auto object-contain rounded-sm border border-primary/30 shadow-[0_0_50px_rgba(139,0,0,0.25)]"
           src="WomenWeavingWebHero.jpg"
         />
       </div>
