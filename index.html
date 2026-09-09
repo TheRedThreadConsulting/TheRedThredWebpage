@@ -190,10 +190,11 @@
     <div class="absolute top-1/3 left-0 w-full red-thread-horizontal opacity-20"></div>
     <div class="absolute bottom-1/3 left-0 w-full red-thread-horizontal opacity-20"></div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full reveal">
+    <!-- UPDATED: Switched to a 12-column grid for better proportion control -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16 items-center w-full reveal">
       
-      <!-- Left Column: Typography -->
-      <div class="text-center lg:text-left order-2 lg:order-1">
+      <!-- Left Column: Typography (Takes up 5 out of 12 columns on desktop) -->
+      <div class="text-center lg:text-left order-2 lg:order-1 lg:col-span-5 z-20">
         <h2 class="display-occult text-xs md:text-sm tracking-[0.6em] uppercase text-primary mb-8">Masters of Esoteric Craft</h2>
         <h1 class="serif-sharp text-5xl md:text-7xl xl:text-8xl text-white leading-[0.9] mb-8 font-light">
           The unseen, woven<br/>
@@ -217,15 +218,16 @@
         </div>
       </div>
 
-      <!-- Right Column: The Hero Image -->
-      <div class="relative flex justify-center items-center order-1 lg:order-2 w-full max-w-lg mx-auto lg:max-w-none">
-        <!-- Deep red glow behind the image to blend the light parchment into the dark background -->
-        <div class="absolute inset-0 orb-glow-crimson opacity-60 scale-110"></div>
+      <!-- Right Column: The Hero Image (Takes up 7 out of 12 columns on desktop) -->
+      <!-- UPDATED: Removed max-width restrictions and added a slight scale boost on large screens -->
+      <div class="relative flex justify-center items-center order-1 lg:order-2 w-full lg:col-span-7 xl:scale-110 transition-transform duration-700">
+        <!-- Deep red glow behind the image -->
+        <div class="absolute inset-0 orb-glow-crimson opacity-60 scale-125"></div>
         
         <!-- The Image -->
         <img
           alt="Women weaving a web - The Red Thread Consulting"
-          class="relative z-10 w-full h-auto object-contain rounded-sm border border-primary/30 shadow-[0_0_50px_rgba(139,0,0,0.15)]"
+          class="relative z-10 w-full h-auto object-contain rounded-sm border border-primary/30 shadow-[0_0_50px_rgba(139,0,0,0.2)]"
           src="WomenWeavingWebHero.jpg"
         />
       </div>
