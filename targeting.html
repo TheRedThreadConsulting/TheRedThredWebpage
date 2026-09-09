@@ -254,29 +254,116 @@
         <div class="h-px w-28 bg-gradient-to-l from-transparent to-primary"></div>
       </div>
 
-      <!-- Logo Systems Grid -->
-      <section class="mb-32">
+    <!-- Logo Systems Marquee Grid -->
+      <section class="mb-32 relative overflow-hidden">
         <div class="text-center mb-16 reveal">
           <span class="display-occult text-[10px] tracking-[0.3em] text-stone-500 uppercase block mb-4">SACRED GLYPHS</span>
           <h3 class="serif-sharp text-4xl md:text-5xl font-light text-white italic">Sigils &amp; Marks</h3>
         </div>
+
+        <!-- Custom Marquee CSS -->
+        <style>
+          @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            /* Shifts the row left by 100% of its width plus the 2rem (gap-8) space between the rows */
+            100% { transform: translateX(calc(-100% - 2rem)); }
+          }
+          .animate-marquee {
+            animation: scroll-left 35s linear infinite;
+          }
+          /* Pauses the scroll when the user hovers over the banner */
+          .marquee-container:hover .animate-marquee {
+            animation-play-state: paused;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .animate-marquee { animation: none !important; }
+          }
+        </style>
         
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 border border-white/5 reveal">
-          <div class="aspect-square bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative">
-            <div class="w-full h-full bg-center bg-no-repeat bg-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" data-alt="Geometric occult-style circular logo mark" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLzgFQU4Gkb_9Uqx_x2kHTN9dvkgRFwfbRTB1I6vvyvebPo1jy-X_lsC9UAI9RTzU1aLFOgh7WfhSYeCY-UUaoflkHblTTNh9oedif4ABwn59ZEKRh79Lf1ewJ79lpi7Oizf8LT5b4PKFjIgwDQU-e-kAyfs7ZY_Bx3FWNdhB79LSE5uRbD9qCDt2lakPE4b-m_JhV7r23i7KAKOMFF8MZYZycZ7uqcz0nUkq99ENLRvc-VjWVoEE6hfC2lGgQTumvWESbGJv5b5s");'></div>
-            <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // α</span>
-          </div>
-          <div class="aspect-square bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative">
-            <div class="w-full h-full bg-center bg-no-repeat bg-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" data-alt="Minimalist linear eye symbol brand mark" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAonIXzX7cWZZKae2NQqI81LYEWCwCAWPCytFWnHLlttnT_cjCVATfzNjg0yVOwq0P_HppAwQWpp8QDtG49Bf3Z3w0xcSf_FtOf3WkXT6DczqoFfx96QmxiGUKeYot6jM1wK2LH3qHU6wWE1IgO4yOnNRPxMph9snP5xRahKkiu1v5r3abRNuy3O0AEOdPda04CO1a8K8QFxLjBHWnvTcziGH_T9fF4RTWJzcdw7FYLaiaHzG8MijFqGaIOYkroU4D--Atrcy3ftrs");'></div>
-            <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // β</span>
-          </div>
-          <div class="aspect-square bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative">
-            <div class="w-full h-full bg-center bg-no-repeat bg-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" data-alt="Abstract triangle interwoven logo concept" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAPOhoWP9yIgIuzhvJejIFeGgde37GMmrciEE3PDiCmehHDKnPWAtNo_YGbxGe8SB3ux_aaBP5xfduwKhyGpo1Rkqa_uOZMf3TEKWLiE_N95ihozvrpjBkmadgmRTfMo3tCDKk0eeGRfz2hY1D9Kf9P5qebh-gNFtzOfBR2CNq7H-0mxTn3cZ38rtvp9hFDnQLlqXh7LKj2E_4EUp9lqDCShkiQQjbCDSnSpc49acIbGK2uUMbNnYAdsxeYXf6pu0MrRgkNXErW82M");'></div>
-            <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // γ</span>
-          </div>
-          <div class="aspect-square bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative">
-            <div class="w-full h-full bg-center bg-no-repeat bg-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" data-alt="Serif lettermark logo with golden accents" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAS1SDojrMjXtF6b_yLSSeXwQdwdqCV0KkY51Pi0Z8QcHkFlrF_tiYU6mMpmwekrB8IdnQQFtRbat2gY5DME6BnBnrwWueRKRYLDOVXA7ztXonIJVD9-JgJv215kRTs-rnEboTek2GqhLwT0dA_ioJMH8XJZz9pfSeCPUHLClllGdPqYE4ZmY7f_oPt-7ygI_OymMvBniY4IVUIQv45I8d1H8gneoT43HCGDExL30n76KG7ErSXdj4YDZUPXQpgSde1hcspDHrVoDc");'></div>
-            <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // δ</span>
+        <div class="relative w-full border-y border-white/5 bg-[#050505]/50 py-10 reveal">
+          
+          <!-- Fade gradients for the left and right edges -->
+          <div class="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none"></div>
+          <div class="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none"></div>
+          
+          <!-- Marquee Container -->
+          <div class="marquee-container flex overflow-hidden gap-8 w-full">
+            
+            <!-- First Set of 6 Images -->
+            <div class="flex shrink-0 gap-8 animate-marquee">
+              
+              <!-- Image 1 -->
+              <div class="aspect-square w-48 md:w-64 bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative border border-white/5 hover:border-[#d4af37]/40">
+                <img src="guitar.png" alt="Guitar System" class="w-full h-full object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500" />
+                <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // α</span>
+              </div>
+
+              <!-- Image 2 -->
+              <div class="aspect-square w-48 md:w-64 bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative border border-white/5 hover:border-[#d4af37]/40">
+                <img src="fire.png" alt="Fire System" class="w-full h-full object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500" />
+                <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // β</span>
+              </div>
+
+              <!-- Image 3 -->
+              <div class="aspect-square w-48 md:w-64 bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative border border-white/5 hover:border-[#d4af37]/40">
+                <img src="worktable.png" alt="Worktable System" class="w-full h-full object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500" />
+                <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // γ</span>
+              </div>
+
+              <!-- Image 4 -->
+              <div class="aspect-square w-48 md:w-64 bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative border border-white/5 hover:border-[#d4af37]/40">
+                <img src="events.png" alt="Events System" class="w-full h-full object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500" />
+                <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // δ</span>
+              </div>
+
+              <!-- Image 5 -->
+              <div class="aspect-square w-48 md:w-64 bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative border border-white/5 hover:border-[#d4af37]/40">
+                <img src="scale.png" alt="Scale System" class="w-full h-full object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500" />
+                <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // ε</span>
+              </div>
+
+              <!-- Image 6 -->
+              <div class="aspect-square w-48 md:w-64 bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative border border-white/5 hover:border-[#d4af37]/40">
+                <img src="theredthreadlogo.png" alt="The Red Thread Logo" class="w-full h-full object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500" />
+                <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // ζ</span>
+              </div>
+
+            </div>
+
+            <!-- Second Set of 6 Images (Duplicate for Seamless Infinite Looping) -->
+            <div class="flex shrink-0 gap-8 animate-marquee" aria-hidden="true">
+              
+              <div class="aspect-square w-48 md:w-64 bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative border border-white/5 hover:border-[#d4af37]/40">
+                <img src="guitar.png" alt="Guitar System" class="w-full h-full object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500" />
+                <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // α</span>
+              </div>
+
+              <div class="aspect-square w-48 md:w-64 bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative border border-white/5 hover:border-[#d4af37]/40">
+                <img src="fire.png" alt="Fire System" class="w-full h-full object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500" />
+                <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // β</span>
+              </div>
+
+              <div class="aspect-square w-48 md:w-64 bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative border border-white/5 hover:border-[#d4af37]/40">
+                <img src="worktable.png" alt="Worktable System" class="w-full h-full object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500" />
+                <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // γ</span>
+              </div>
+
+              <div class="aspect-square w-48 md:w-64 bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative border border-white/5 hover:border-[#d4af37]/40">
+                <img src="events.png" alt="Events System" class="w-full h-full object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500" />
+                <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // δ</span>
+              </div>
+
+              <div class="aspect-square w-48 md:w-64 bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative border border-white/5 hover:border-[#d4af37]/40">
+                <img src="scale.png" alt="Scale System" class="w-full h-full object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500" />
+                <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // ε</span>
+              </div>
+
+              <div class="aspect-square w-48 md:w-64 bg-[#0a0a0a] rounded-none flex items-center justify-center p-8 hover:bg-stone-900/50 transition-all duration-300 group relative border border-white/5 hover:border-[#d4af37]/40">
+                <img src="theredthreadlogo.png" alt="The Red Thread Logo" class="w-full h-full object-contain grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500" />
+                <span class="absolute bottom-3 left-3 display-occult text-[9px] text-stone-600 tracking-widest">SIGIL // ζ</span>
+              </div>
+
+            </div>
           </div>
         </div>
       </section>
