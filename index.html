@@ -184,53 +184,58 @@
     </div>
   </nav>
 
-  <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20">
+    <!-- Background textures -->
     <div class="absolute inset-0 loom-texture"></div>
+    <div class="absolute top-1/3 left-0 w-full red-thread-horizontal opacity-20"></div>
+    <div class="absolute bottom-1/3 left-0 w-full red-thread-horizontal opacity-20"></div>
 
-    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div class="relative w-[500px] h-[500px] md:w-[800px] md:h-[800px]">
-        <div class="absolute inset-0 orb-glow-crimson opacity-40"></div>
-        <!-- HERO IMAGE UPDATED HERE -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full reveal">
+      
+      <!-- Left Column: Typography -->
+      <div class="text-center lg:text-left order-2 lg:order-1">
+        <h2 class="display-occult text-xs md:text-sm tracking-[0.6em] uppercase text-primary mb-8">Masters of Esoteric Craft</h2>
+        <h1 class="serif-sharp text-5xl md:text-7xl xl:text-8xl text-white leading-[0.9] mb-8 font-light">
+          The unseen, woven<br/>
+          <span class="italic text-silver opacity-80">with precision.</span>
+        </h1>
+
+        <p class="max-w-xl mx-auto lg:mx-0 text-base md:text-lg text-stone-300 italic tracking-[0.06em] leading-[1.75] mb-12"
+           style="font-family:'Playfair Display', serif;">
+          We are the architects of the invisible. 
+          <span class="text-white font-semibold not-italic">The Red Thread</span> 
+          weaves the narratives of the unseen, connecting your vision to the collective unconscious through master-level craftsmanship.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
+          <a class="group relative px-10 py-4 bg-primary text-white display-occult tracking-widest text-xs overflow-hidden transition-all duration-500 border border-primary hover:bg-transparent" href="services.html">
+            <span class="relative z-10">THE LOOM</span>
+          </a>
+          <a class="px-10 py-4 border border-white/10 text-stone-400 display-occult tracking-widest text-xs hover:border-primary hover:text-white transition-all bg-white/5" href="portfolio.html">
+            THE GALLERY
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: The Hero Image -->
+      <div class="relative flex justify-center items-center order-1 lg:order-2 w-full max-w-lg mx-auto lg:max-w-none">
+        <!-- Deep red glow behind the image to blend the light parchment into the dark background -->
+        <div class="absolute inset-0 orb-glow-crimson opacity-60 scale-110"></div>
+        
+        <!-- The Image -->
         <img
-          alt="Women weaving a web"
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 object-cover rounded-full shadow-[0_0_150px_rgba(139,0,0,0.4)] opacity-80"
+          alt="Women weaving a web - The Red Thread Consulting"
+          class="relative z-10 w-full h-auto object-contain rounded-sm border border-primary/30 shadow-[0_0_50px_rgba(139,0,0,0.15)]"
           src="WomenWeavingWebHero.jpg"
         />
       </div>
+
     </div>
 
-    <div class="absolute top-1/4 left-0 w-full red-thread-horizontal opacity-30"></div>
-    <div class="absolute bottom-1/4 left-0 w-full red-thread-horizontal opacity-30"></div>
-
-   <div class="relative z-10 max-w-5xl px-6 pt-28 md:pt-0 text-center reveal">
-      <h2 class="display-occult text-xs md:text-sm tracking-[0.6em] uppercase text-primary mb-8">Masters of Esoteric Craft</h2>
-      <h1 class="serif-sharp text-5xl md:text-9xl text-white leading-[0.9] mb-10 font-light">
-        The unseen, woven<br/>
-        <span class="italic text-silver opacity-80">with precision.</span>
-      </h1>
-
-      <p class="max-w-2xl mx-auto text-base md:text-xl text-stone-200/90 italic tracking-[0.06em] leading-[1.75] mb-14"
-         style="font-family:'Playfair Display', serif; text-shadow: 0 0 14px rgba(139, 0, 0, 0.25);">
-        We are the architects of the invisible.
-        <span class="text-white font-semibold not-italic">
-          The Red Thread
-        </span>
-        weaves the narratives of the unseen, connecting your vision to the collective unconscious through master-level craftsmanship.
-      </p>
-
-      <div class="flex flex-col md:flex-row items-center justify-center gap-8">
-        <a class="group relative px-12 py-5 bg-primary text-white display-occult tracking-widest text-xs overflow-hidden transition-all duration-500 border border-primary hover:bg-transparent" href="services.html">
-          <span class="relative z-10">THE LOOM</span>
-        </a>
-        <a class="px-12 py-5 border border-white/10 text-stone-400 display-occult tracking-widest text-xs hover:border-primary hover:text-white transition-all bg-white/5" href="portfolio.html">
-          THE GALLERY
-        </a>
-      </div>
-    </div>
-
-    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 opacity-30 flex flex-col items-center">
-      <div class="w-px h-24 bg-gradient-to-b from-transparent via-primary to-transparent mb-4"></div>
-      <span class="material-symbols-outlined text-white text-3xl font-thin">expand_more</span>
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-30 flex flex-col items-center">
+      <div class="w-px h-16 bg-gradient-to-b from-transparent via-primary to-transparent mb-4"></div>
+      <span class="material-symbols-outlined text-white text-2xl font-thin">expand_more</span>
     </div>
   </header>
 
