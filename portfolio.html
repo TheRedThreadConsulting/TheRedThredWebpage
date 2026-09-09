@@ -1,5 +1,5 @@
- <!DOCTYPE html>
-<html class="dark" lang="en">
+<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -12,6 +12,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 
+  <!-- Added the Tailwind Config to match Index and Services -->
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#8b0000",
+            accent: "#ff0000",
+            silver: "#c0c0c0",
+            "background-dark": "#050505",
+          },
+          fontFamily: {
+            display: ["Cinzel", "serif"],
+            serif: ["Cormorant Garamond", "serif"],
+            sans: ["Inter", "sans-serif"],
+          }
+        },
+      },
+    };
+  </script>
+
   <style type="text/tailwindcss">
     :root {
       --primary-red: #8b0000;
@@ -21,12 +43,12 @@
       --deep-black: #050505;
       --charcoal: #0a0a0a;
       --thread-width: 1px;
-   }
+    }
   
-   .accent-label {
-  color: var(--accent-red-text);
-  text-shadow: 0 0 10px rgba(196, 58, 58, 0.18);
-   }
+    .accent-label {
+      color: var(--accent-red-text);
+      text-shadow: 0 0 10px rgba(196, 58, 58, 0.18);
+    }
 
     .bg-weave {
       background-image: radial-gradient(circle at 2px 2px, rgba(139, 0, 0, 0.15) 1px, transparent 0);
@@ -142,7 +164,7 @@
   </style>
 </head>
 
-<body class="bg-[#050505] text-stone-300 font-[Inter] selection:bg-[#8b0000]/50 overflow-x-hidden bg-weave relative">
+<body class="bg-background-dark text-stone-300 font-sans selection:bg-primary/50 overflow-x-hidden bg-weave relative">
 
   <!-- Background Threads -->
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -157,27 +179,30 @@
   </div>
 
   <!-- NAV -->
-  <nav class="fixed top-0 w-full z-50 bg-[#050505]/90 backdrop-blur-xl border-b border-[#8b0000]/20">
+  <nav class="fixed top-0 w-full z-50 bg-background-dark/90 backdrop-blur-xl border-b border-primary/20">
     <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
 
-      <div class="flex items-center space-x-3 group">
-        <span class="material-symbols-outlined text-[#8b0000] text-3xl font-light">gesture</span>
+      <!-- Made logo clickable to return to index.html -->
+      <a href="index.html" aria-label="Return to Homepage" class="flex items-center space-x-3 group">
+        <span class="material-symbols-outlined text-primary text-3xl font-light">gesture</span>
         <span class="display-occult text-xl tracking-[0.3em] text-white">THE RED THREAD</span>
-      </div>
+      </a>
 
+      <!-- Desktop links -->
       <div class="hidden md:flex items-center space-x-12 display-occult text-[10px] tracking-[0.3em] uppercase">
-        <a class="hover:text-[#8b0000] transition-colors text-stone-400" href="services.html">The Loom</a>
-        <a class="hover:text-[#8b0000] transition-colors text-stone-400" href="index.html">The Threshold</a>
-        <a class="px-8 py-2 border border-[#8b0000]/30 text-white hover:border-[#8b0000] hover:text-[#8b0000] transition-all duration-500 bg-[#8b0000]/5" href="index.html#contact">
+        <a class="hover:text-primary transition-colors text-stone-400" href="services.html">The Loom</a>
+        <a class="hover:text-primary transition-colors text-stone-400" href="index.html">The Threshold</a>
+        <a class="px-8 py-2 border border-primary/30 text-white hover:border-primary hover:text-primary transition-all duration-500 bg-primary/5" href="index.html#contact">
           Contact the Oracle
         </a>
       </div>
 
+      <!-- Mobile menu -->
       <div class="md:hidden relative">
         <button
           id="mobileMenuButton"
           type="button"
-          class="inline-flex items-center justify-center rounded-md p-2 text-white hover:text-[#8b0000] hover:bg-white/5 transition"
+          class="inline-flex items-center justify-center rounded-md p-2 text-white hover:text-primary hover:bg-white/5 transition"
           aria-controls="mobileMenu"
           aria-expanded="false"
           aria-label="Open menu"
@@ -187,12 +212,12 @@
 
         <div
           id="mobileMenu"
-          class="hidden absolute right-0 mt-3 w-64 z-[999] rounded-xl border border-[#8b0000]/20 bg-[#050505]/95 backdrop-blur-xl shadow-2xl overflow-hidden"
+          class="hidden absolute right-0 mt-3 w-64 z-[999] rounded-xl border border-primary/20 bg-background-dark/95 backdrop-blur-xl shadow-2xl overflow-hidden"
         >
           <div class="flex flex-col p-3 display-occult text-[10px] tracking-[0.3em] uppercase">
-            <a class="px-3 py-3 text-stone-300 hover:text-[#8b0000] hover:bg-white/5 transition rounded-lg" href="services.html">The Loom</a>
-            <a class="px-3 py-3 text-stone-300 hover:text-[#8b0000] hover:bg-white/5 transition rounded-lg" href="index.html">The Threshold</a>
-            <a class="px-3 py-3 text-white border border-[#8b0000]/30 bg-[#8b0000]/5 hover:border-[#8b0000] hover:text-[#8b0000] transition rounded-lg" href="home.html#contact">
+            <a class="px-3 py-3 text-stone-300 hover:text-primary hover:bg-white/5 transition rounded-lg" href="services.html">The Loom</a>
+            <a class="px-3 py-3 text-stone-300 hover:text-primary hover:bg-white/5 transition rounded-lg" href="index.html">The Threshold</a>
+            <a class="px-3 py-3 text-white border border-primary/30 bg-primary/5 hover:border-primary hover:text-primary transition rounded-lg" href="index.html#contact">
               Contact the Oracle
             </a>
           </div>
@@ -212,7 +237,7 @@
       <p class="max-w-2xl text-stone-400 text-base md:text-lg leading-relaxed mb-8 px-2">
         Selected works across design, brand systems, and digital architecture — crafted to feel intentional on every screen.
       </p>
-      <div class="w-24 h-px bg-[#8b0000]/40"></div>
+      <div class="w-24 h-px bg-primary/40"></div>
     </div>
   </header>
 
@@ -342,7 +367,8 @@
                class="project-image w-full h-full object-cover object-center opacity-70 group-hover:opacity-100"
                src="guitar.png"/>
           <div class="project-overlay absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/40">
-            <a href="home.html#contact"
+            <!-- Fixed link from home.html to index.html -->
+            <a href="index.html#contact"
                class="detail-link serif-sharp text-white text-base md:text-lg border border-white/20 px-6 md:px-8 py-3 backdrop-blur-sm hover:bg-white hover:text-black transition-all">
               View Details
             </a>
@@ -396,14 +422,14 @@
   </main>
 
   <!-- CTA -->
-  <section class="py-20 md:py-32 relative overflow-hidden bg-[#0a0a0a]/50 border-t border-[#8b0000]/10">
+  <section class="py-20 md:py-32 relative overflow-hidden bg-[#0a0a0a]/50 border-t border-primary/10">
     <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
       <h2 class="serif-sharp text-3xl md:text-5xl text-white font-light italic mb-10 md:mb-12">
         "Every creation is a thread pulled from the infinite."
       </h2>
 
       <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
-        <a class="w-full md:w-auto px-10 py-4 md:px-12 md:py-5 bg-[#8b0000] text-white display-occult tracking-widest text-[10px] hover:bg-[#8b0000]/80 transition-all border border-[#8b0000] text-center" href="index.html#contact">
+        <a class="w-full md:w-auto px-10 py-4 md:px-12 md:py-5 bg-primary text-white display-occult tracking-widest text-[10px] hover:bg-primary/80 transition-all border border-primary text-center" href="index.html#contact">
           COMMENCE THE WORK
         </a>
         <a class="w-full md:w-auto px-10 py-4 md:px-12 md:py-5 border border-[#d4af37]/30 text-[#d4af37] display-occult tracking-widest text-[10px] hover:border-[#d4af37] transition-all text-center" href="services.html">
@@ -414,7 +440,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="py-16 md:py-20 border-t border-white/5 bg-[#050505] relative">
+  <footer class="py-16 md:py-20 border-t border-white/5 bg-background-dark relative">
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12 relative z-10 text-center md:text-left">
       <div class="flex items-center space-x-3">
         <span class="material-symbols-outlined text-[#c43a3a] text-2xl font-thin">gesture</span>
